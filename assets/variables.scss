@@ -2,3 +2,41 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+@import '~vuetify/src/styles/styles.sass';
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+@font-face {
+  font-family: 'BMHANNAPro';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$material-light: map-merge(
+  $material-light,
+  (
+    'background': rgb(216, 207, 199),
+    'cards': #d8cfc7,
+  )
+);
+$material-dark: map-merge(
+  $material-dark,
+  (
+    'background': #363636,
+    'text': (
+      'primary': #d8cfc7,
+    ),
+    'icons': (
+      'active': #d8cfc7,
+      'inactive': #d8cfc7,
+    ),
+    'cards': #363636,
+  )
+);
+$tabs-item-min-width: 0px;
+$tabs-item-padding: 0px;
+
+$heading-font-family: 'BMHANNAPro';
+$body-font-family: 'Space Mono';

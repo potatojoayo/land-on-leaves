@@ -1,0 +1,43 @@
+$border-color-light: #707070;
+$border-color-dark: #d8cfc7;
+$shadow-color-light: #707070;
+$shadow-color-dark: rgba(0, 0, 0, 0.8);
+
+.navigation-search-bar {
+  .v-select__slot {
+    padding: 0 10px;
+  }
+  .mdi {
+    font-size: 30px;
+    margin-left: 10px;
+  }
+}
+.menuable__content__active {
+  box-shadow: 1px 1px 3px
+    $shadow-color-light !important;
+}
+.menuable__content__active.theme--dark {
+  box-shadow: 1px 1px 3px
+    $shadow-color-dark !important;
+}
+.login-text-field {
+  label {
+    color: #b0b0b0 !important;
+    font-family: 'BMHANNAPro';
+  }
+  input {
+    color: #d8cfc7 !important;
+    font-family: 'BMHANNAPro';
+  }
+
+  .v-input__slot::before {
+    border-color: #b0b0b0 !important;
+  }
+  .v-input__slot:hover {
+    border-color: #b0b0b0 !important;
+  }
+}
+input[type='password'] {
+  color: #d8cfc7 !important;
+  font-family: 'Roboto';
+}
