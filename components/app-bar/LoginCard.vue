@@ -67,46 +67,12 @@
 </template>
 <script>
 import Vue from 'vue'
+import Cookies from 'js-cookie'
 export default Vue.extend({
   data() {
-    return { email: '', password: '' }
+    return { email: '', password: '' , csrftoken: ''}
   },
   mounted() {
-    function getCookie(name) {
-      let cookieValue = null
-      if (
-        document.cookie &&
-        document.cookie !== ''
-      ) {
-        const cookies =
-          document.cookie.split(';')
-        for (
-          let i = 0;
-          i < cookies.length;
-          i++
-        ) {
-          const cookie =
-            cookies[i].trim()
-          // Does this cookie string begin with the name we want?
-          if (
-            cookie.substring(
-              0,
-              name.length + 1
-            ) ===
-            name + '='
-          ) {
-            cookieValue =
-              decodeURIComponent(
-                cookie.substring(
-                  name.length + 1
-                )
-              )
-            break
-          }
-        }
-      }
-      return cookieValue
-    }
     this.$axios
       .get(
         'https://api.landonleaves.com/api-auth/login',
@@ -115,27 +81,23 @@ export default Vue.extend({
         }
       )
       .then(() => {
-        const csrftoken = getCookie(
-          'csrftoken'
-        )
-        console.log(csrftoken)
+			  this.csrftoken = Cookies.get('csrftoken')
       })
   },
   methods: {
     login(email, password) {
       this.$axios.post(
-        'https://api.landonleaves.com/accounts/login/',
-        { email, password },
-
+        'https://api.landonleaves.com/login/',
+        { email, password }, 
         {
           headers: {
             'Content-Type':
               'application/json',
-            'X-CSRFToken': 'asdasdg',
+            'X-CSRFToken': this.csrftoken,
           },
-          credentials: 'same-origin',
+			withCredentials: true
         }
-      )
+      ).then(res=>console.log(res))
     },
   },
 })
