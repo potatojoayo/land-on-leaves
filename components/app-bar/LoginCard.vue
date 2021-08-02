@@ -71,70 +71,71 @@ export default Vue.extend({
   data() {
     return { email: '', password: '' }
   },
-  methods: {
-    login(email, password) {
-      this.$axios
-        .get(
-          'https://api.landonleaves.com/p/product',
-          {
-            headers: {},
-          }
-        )
-        .then((res) => {
-          console.log(res)
-        })
-
-      function getCookie(name) {
-        let cookieValue = null
-        if (
-          document.cookie &&
-          document.cookie !== ''
+  mounted() {
+    function getCookie(name) {
+      let cookieValue = null
+      if (
+        document.cookie &&
+        document.cookie !== ''
+      ) {
+        const cookies =
+          document.cookie.split(';')
+        for (
+          let i = 0;
+          i < cookies.length;
+          i++
         ) {
-          const cookies =
-            document.cookie.split(';')
-          for (
-            let i = 0;
-            i < cookies.length;
-            i++
+          const cookie =
+            cookies[i].trim()
+          // Does this cookie string begin with the name we want?
+          if (
+            cookie.substring(
+              0,
+              name.length + 1
+            ) ===
+            name + '='
           ) {
-            const cookie =
-              cookies[i].trim()
-            // Does this cookie string begin with the name we want?
-            if (
-              cookie.substring(
-                0,
-                name.length + 1
-              ) ===
-              name + '='
-            ) {
-              cookieValue =
-                decodeURIComponent(
-                  cookie.substring(
-                    name.length + 1
-                  )
+            cookieValue =
+              decodeURIComponent(
+                cookie.substring(
+                  name.length + 1
                 )
-              break
-            }
+              )
+            break
           }
         }
-        return cookieValue
       }
-      const csrftoken = getCookie(
-        'csrftoken'
+      return cookieValue
+    }
+    this.$axios
+      .get(
+        'https://api.landonleaves.com/api-auth/login',
+        {
+          withCredentials: true,
+        }
       )
-      this.$axios
-        .post(
-          'https://api.landonleaves.com/accounts/login/',
-          { email, password },
-          {
-            headers: {
-              'X-CSRFToken': 'asdasdg',
-            },
-          }
+      .then(() => {
+        const csrftoken = getCookie(
+          'csrftoken'
         )
-        .then(() => {
-          console.log(csrftoken)
-        })
+        console.log(csrftoken)
+      })
+  },
+  methods: {
+    login(email, password) {
+      this.$axios.post(
+        'https://api.landonleaves.com/accounts/login/',
+        { email, password },
+
+        {
+          headers: {
+            'Content-Type':
+              'application/json',
+            'X-CSRFToken': 'asdasdg',
+          },
+          credentials: 'same-origin',
+        }
+      )
     },
   },
 })
