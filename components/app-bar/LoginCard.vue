@@ -65,28 +65,76 @@
     </v-card>
   </div>
 </template>
-<script lang="ts">
+<script>
 import Vue from 'vue'
-import Cookie from 'js-cookie'
 export default Vue.extend({
   data() {
     return { email: '', password: '' }
   },
-
-  mounted() {
-    this.$axios.get(
-      'https://api.landonleaves.com/'
-    )
-  },
   methods: {
-    login(
-      email: string,
-      password: string
-    ) {
-      const csrf = Cookie.get(
+    login(email, password) {
+      this.$axios
+        .get(
+          'https://api.landonleaves.com/p/product',
+          {
+            headers: {},
+          }
+        )
+        .then((res) => {
+          console.log(res)
+        })
+
+      function getCookie(name) {
+        let cookieValue = null
+        if (
+          document.cookie &&
+          document.cookie !== ''
+        ) {
+          const cookies =
+            document.cookie.split(';')
+          for (
+            let i = 0;
+            i < cookies.length;
+            i++
+          ) {
+            const cookie =
+              cookies[i].trim()
+            // Does this cookie string begin with the name we want?
+            if (
+              cookie.substring(
+                0,
+                name.length + 1
+              ) ===
+              name + '='
+            ) {
+              cookieValue =
+                decodeURIComponent(
+                  cookie.substring(
+                    name.length + 1
+                  )
+                )
+              break
+            }
+          }
+        }
+        return cookieValue
+      }
+      const csrftoken = getCookie(
         'csrftoken'
       )
-      console.log(csrf)
+      this.$axios
+        .post(
+          'https://api.landonleaves.com/accounts/login/',
+          { email, password },
+          {
+            headers: {
+              'X-CSRFToken': 'asdasdg',
+            },
+          }
+        )
+        .then(() => {
+          console.log(csrftoken)
+        })
     },
   },
 })
