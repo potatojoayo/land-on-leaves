@@ -74,8 +74,8 @@ export default Vue.extend({
   },
 
   mounted() {
-    this.$axios.get(
-      'https://api.landonleaves.com/'
+    this.$axios.$get(
+      'https://api.landonleaves.com/p/product/1/'
     )
   },
   methods: {
