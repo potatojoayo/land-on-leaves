@@ -100,7 +100,17 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  // env
+  env: {
+    baseURL:
+      process.env.BASE_URL ||
+      'http://localhost:8000',
+  },
+
+  /*
   server: {
     host: '0.0.0.0',
   },
+	*/
 }
