@@ -11,7 +11,7 @@
       >
         로그인이 필요한 메뉴입니다.
       </v-card-title>
-      <v-form>
+      <form @submit.prevent="login">
         <v-col
           ><v-text-field
             v-model="email"
@@ -46,12 +46,8 @@
               v-ripple="false"
               color="secondary"
               class="primary--text"
-              @click="
-                login(
-                  'user1@test.com',
-                  'test'
-                )
-              "
+              type="submit"
+              @click="login()"
               >로그인</v-btn
             >
           </v-row>
@@ -61,7 +57,7 @@
             >를 잊으셨습니까?</span
           >
         </v-col>
-      </v-form>
+      </form>
     </v-card>
   </div>
 </template>
@@ -74,19 +70,30 @@ export default Vue.extend({
   },
 
   mounted() {
-    this.$axios.get(
-      'https://api.landonleaves.com/'
-    )
+    this.login()
   },
   methods: {
-    login(
-      email: string,
-      password: string
-    ) {
-      const csrf = Cookie.get(
-        'csrftoken'
+    login() {
+      this.email = 'user1@test.com'
+      this.password = 'test'
+
+      fetch(
+        'https://api.landonleaves.com/p/product/',
+        {
+          method: 'GET',
+          credentials: 'include',
+        }
       )
-      console.log(csrf)
+        .then((response) =>
+          response.json()
+        )
+        .then((json) => {
+          console.log('LoggedIn')
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      Cookie.get('csrftoken')
     },
   },
 })
