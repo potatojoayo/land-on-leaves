@@ -67,37 +67,18 @@
 </template>
 <script>
 import Vue from 'vue'
-import Cookies from 'js-cookie'
+
 export default Vue.extend({
   data() {
-    return { email: '', password: '' , csrftoken: ''}
-  },
-  mounted() {
-    this.$axios
-      .get(
-        'https://api.landonleaves.com/api-auth/login',
-        {
-          withCredentials: true,
-        }
-      )
-      .then(() => {
-			  this.csrftoken = Cookies.get('csrftoken')
-      })
+    return {
+      email: '',
+      password: '',
+      csrftoken: '',
+    }
   },
   methods: {
     login(email, password) {
-      this.$axios.post(
-        'https://api.landonleaves.com/login/',
-        { email, password }, 
-        {
-          headers: {
-            'Content-Type':
-              'application/json',
-            'X-CSRFToken': this.csrftoken,
-          },
-			withCredentials: true
-        }
-      ).then(res=>console.log(res))
+      this.$api.login(email, password)
     },
   },
 })
