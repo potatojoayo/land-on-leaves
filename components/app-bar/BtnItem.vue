@@ -74,6 +74,15 @@ export default Vue.extend({
       }
     },
   },
+
+  head: {
+    meta: [
+      {
+        name: 'csrf-token',
+        content: '{{ csrf_token() }}',
+      },
+    ],
+  },
 })
 </script>
 
