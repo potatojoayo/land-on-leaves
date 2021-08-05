@@ -5,29 +5,22 @@ export default function (
   const axios = $axios.create({
     baseURL: process.env.BASE_URL,
   })
-  function login(email, password) {
-    axios
-      .post('/rest-auth/login/', {
+
+  async function login(
+    email,
+    password
+  ) {
+    const res = await axios.post(
+      '/rest-auth/login/',
+      {
         email,
         password,
-      })
-      .then((res) => {
-        const token = res.data.key
-        console.log(res)
-        axios
-          .get(
-            'https://dev.com:8000/u/customer/2/',
-            {
-              headers: {
-                Authorization:
-                  'Token ' + token,
-              },
-            }
-          )
-          .then((res) => {
-            console.log(res)
-          })
-      })
+      }
+    )
+    const token = res.data.key
+    axios.defaults.headers.common.Authorization =
+      'Token ' + token
+    axios.get('/rest-auth/user/')
   }
 
   const api = {

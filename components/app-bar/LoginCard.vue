@@ -47,7 +47,7 @@
               color="secondary"
               class="primary--text"
               @click="
-                login(
+                $api.login(
                   'user1@test.com',
                   'test'
                 )
@@ -75,11 +75,6 @@ export default Vue.extend({
       password: '',
       csrftoken: '',
     }
-  },
-  methods: {
-    login(email, password) {
-      this.$api.login(email, password)
-    },
   },
 })
 </script>
