@@ -59,6 +59,10 @@ export default Vue.extend({
           )
         ) {
           this.expand = false
+          window.removeEventListener(
+            'click',
+            onOutsideClick
+          )
         }
       }
 
@@ -67,22 +71,8 @@ export default Vue.extend({
           'click',
           onOutsideClick
         )
-      } else {
-        window.removeEventListener(
-          'click',
-          onOutsideClick
-        )
       }
     },
-  },
-
-  head: {
-    meta: [
-      {
-        name: 'csrf-token',
-        content: '{{ csrf_token() }}',
-      },
-    ],
   },
 })
 </script>

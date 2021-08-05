@@ -47,7 +47,7 @@
               color="secondary"
               class="primary--text"
               @click="
-                login(
+                $api.login(
                   'user1@test.com',
                   'test'
                 )
@@ -65,29 +65,15 @@
     </v-card>
   </div>
 </template>
-<script lang="ts">
+<script>
 import Vue from 'vue'
-import Cookie from 'js-cookie'
+
 export default Vue.extend({
   data() {
-    return { email: '', password: '' }
-  },
-
-  mounted() {
-    this.$axios.$get(
-      'https://api.landonleaves.com/p/product/1/'
-    )
-  },
-  methods: {
-    login(
-      email: string,
-      password: string
-    ) {
-      const csrf = Cookie.get(
-        'csrftoken'
-      )
-      console.log(csrf)
-    },
+    return {
+      email: '',
+      password: '',
+    }
   },
 })
 </script>
