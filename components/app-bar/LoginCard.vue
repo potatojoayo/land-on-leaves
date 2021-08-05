@@ -11,7 +11,7 @@
       >
         로그인이 필요한 메뉴입니다.
       </v-card-title>
-      <v-form>
+		<v-form>
         <v-col
           ><v-text-field
             v-model="email"
@@ -45,8 +45,9 @@
               class="primary--text"
               @click="
                 $api.login(
-                  'user1@test.com',
-                  'test'
+                  email,
+                  password
+
                 )
               "
               >로그인</v-btn
