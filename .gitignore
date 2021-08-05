@@ -90,5 +90,5 @@ sw.*
 *.swp
 
 
-# Pem file
+# Pem files
 *.pem
