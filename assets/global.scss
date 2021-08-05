@@ -20,24 +20,3 @@ $shadow-color-dark: rgba(0, 0, 0, 0.8);
   box-shadow: 1px 1px 3px
     $shadow-color-dark !important;
 }
-.login-text-field {
-  label {
-    color: #b0b0b0 !important;
-    font-family: 'BMHANNAPro';
-  }
-  input {
-    color: #d8cfc7 !important;
-    font-family: 'BMHANNAPro';
-  }
-
-  .v-input__slot::before {
-    border-color: #b0b0b0 !important;
-  }
-  .v-input__slot:hover {
-    border-color: #b0b0b0 !important;
-  }
-}
-input[type='password'] {
-  color: #d8cfc7 !important;
-  font-family: 'Roboto';
-}
