@@ -1,5 +1,5 @@
 <template>
-  <div class="login-card">
+  <div>
     <v-card
       color="primary"
       width="300px"

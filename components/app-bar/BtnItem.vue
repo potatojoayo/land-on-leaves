@@ -16,6 +16,10 @@
         "
         class="login-card"
       />
+      <CartCard
+        v-if="name === 'Cart' && expand"
+        class="cart-card"
+      />
     </v-scale-transition>
   </div>
 </template>
@@ -23,9 +27,11 @@
 <script lang="ts">
 import Vue from 'vue'
 import LoginCard from './LoginCard.vue'
+import CartCard from './CartCard.vue'
 export default Vue.extend({
   components: {
     LoginCard,
+    CartCard,
   },
   props: {
     name: {
@@ -54,6 +60,8 @@ export default Vue.extend({
           )
 
         if (
+          card?.className ===
+            '.login-card' &&
           !card!.contains(
             ev.target as Element
           )
@@ -84,6 +92,11 @@ export default Vue.extend({
   flex-direction: column;
 }
 .login-card {
+  position: absolute;
+  right: 90px;
+  top: 40px;
+}
+.cart-card {
   position: absolute;
   right: 90px;
   top: 40px;
