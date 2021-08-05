@@ -47,7 +47,10 @@
               color="secondary"
               class="primary--text"
               @click="
-                login(email, password)
+                $api.login(
+                  email,
+                  password
+                )
               "
               >로그인</v-btn
             >
@@ -69,14 +72,7 @@ export default Vue.extend({
     return {
       email: '',
       password: '',
-      csrftoken: '',
     }
-  },
-
-  methods: {
-    login(email, password) {
-      this.$api(email, password)
-    },
   },
 })
 </script>
