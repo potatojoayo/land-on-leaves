@@ -1,4 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
+import path from 'path'
+import fs from 'fs'
+import dotenv from 'dotenv'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -50,6 +53,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -57,7 +61,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
-
+  plugins: ['~/plugins/axios.js'],
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
@@ -100,7 +104,28 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  // env
+  env: {
+    baseURL:
+      process.env.BASE_URL ||
+      'http://localhost:8000',
+  },
+
   server: {
-    host: '0.0.0.0',
+    https: {
+      key: fs.readFileSync(
+        path.resolve(
+          __dirname,
+          'localhost-key.pem'
+        )
+      ),
+      cert: fs.readFileSync(
+        path.resolve(
+          __dirname,
+          'localhost.pem'
+        )
+      ),
+    },
   },
 }

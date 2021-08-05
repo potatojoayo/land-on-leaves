@@ -46,8 +46,9 @@
               v-ripple="false"
               color="secondary"
               class="primary--text"
-              type="submit"
-              @click="login()"
+              @click="
+                login(email, password)
+              "
               >로그인</v-btn
             >
           </v-row>
@@ -61,44 +62,25 @@
     </v-card>
   </div>
 </template>
-<script lang="ts">
+<script>
 import Vue from 'vue'
-import Cookie from 'js-cookie'
 export default Vue.extend({
   data() {
-    return { email: '', password: '' }
+    return {
+      email: '',
+      password: '',
+      csrftoken: '',
+    }
   },
 
-  mounted() {
-    this.login()
-  },
   methods: {
-    login() {
-      this.email = 'user1@test.com'
-      this.password = 'test'
-
-      fetch(
-        'https://api.landonleaves.com/p/product/',
-        {
-          method: 'GET',
-          credentials: 'include',
-        }
-      )
-        .then((response) =>
-          response.json()
-        )
-        .then((json) => {
-          console.log('LoggedIn')
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-      Cookie.get('csrftoken')
+    login(email, password) {
+      this.$api(email, password)
     },
   },
 })
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .v-card {
   border-radius: 0 3px 5px 5px !important;
 }

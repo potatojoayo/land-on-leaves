@@ -59,16 +59,15 @@ export default Vue.extend({
           )
         ) {
           this.expand = false
+          window.removeEventListener(
+            'click',
+            onOutsideClick
+          )
         }
       }
 
       if (this.expand) {
         window.addEventListener(
-          'click',
-          onOutsideClick
-        )
-      } else {
-        window.removeEventListener(
           'click',
           onOutsideClick
         )
