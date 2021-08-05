@@ -113,13 +113,13 @@ export default {
       key: fs.readFileSync(
         path.resolve(
           __dirname,
-          process.env.SERVER_KEY
+          process.env.SERVER_KEY_PEM
         )
       ),
       cert: fs.readFileSync(
         path.resolve(
           __dirname,
-          process.env.SERVER
+          process.env.SERVER_PEM
         )
       ),
     },
