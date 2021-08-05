@@ -73,7 +73,6 @@ export default Vue.extend({
     return {
       email: '',
       password: '',
-      csrftoken: '',
     }
   },
 })
