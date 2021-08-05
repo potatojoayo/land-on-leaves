@@ -7,8 +7,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
 # Pem file
 *.pem
+=======
+# Pem files
+*.pem
+
+>>>>>>> c101c52a72981a0f93411bb57679242e5545c79d
 # Runtime data
 pids
 *.pid

@@ -1,7 +1,6 @@
-import colors from 'vuetify/es5/util/colors'
 import path from 'path'
 import fs from 'fs'
-import dotenv from 'dotenv'
+import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -42,7 +41,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['~/plugins/api.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -61,7 +60,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
-  plugins: ['~/plugins/axios.js'],
+  plugins: ['~/plugins/api.js'],
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
@@ -106,13 +105,10 @@ export default {
   build: {},
 
   // env
-  env: {
-    baseURL:
-      process.env.BASE_URL ||
-      'http://localhost:8000',
-  },
+  env: {},
 
   server: {
+    host: '0.0.0.0',
     https: {
       key: fs.readFileSync(
         path.resolve(
