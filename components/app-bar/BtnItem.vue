@@ -1,28 +1,37 @@
 <template>
   <div class="app-bar-cols">
-    <v-btn
-      v-ripple="false"
-      plain
-      class="primary--text"
-      @click="toggleCard($event)"
-      >{{ name }}</v-btn
+    <v-menu
+      content-class="btn-item"
+      :close-on-content-click="false"
+      transition="slide-x-transition"
+      :absolute="true"
+      :position-x="1520"
+      :position-y="50"
     >
-    <v-scale-transition
-      origin="top right"
-    >
+      <template
+        #activator="{ attrs, on }"
+      >
+        <v-btn
+          v-ripple="false"
+          plain
+          class="primary--text"
+          v-bind="attrs"
+          v-on="on"
+          >{{ name }}</v-btn
+        >
+      </template>
+
       <LoginCard
-        v-if="
-          name === 'Account' && expand
-        "
+        v-if="name === 'Account'"
         class="login-card"
-      />
-      <CartCard
-        v-if="name === 'Cart' && expand"
+      /><CartCard
+        v-else
         class="cart-card"
       />
-    </v-scale-transition>
+    </v-menu>
   </div>
 </template>
+
 
 <script lang="ts">
 import Vue from 'vue'
@@ -44,44 +53,6 @@ export default Vue.extend({
       expand: false,
     }
   },
-  methods: {
-    toggleCard(e: Event) {
-      e.stopPropagation()
-      this.expand = !this.expand
-      const onOutsideClick = (
-        ev: Event
-      ) => {
-        const card =
-          document.querySelector(
-            '.login-card'
-          ) ||
-          document.querySelector(
-            '.cart-card'
-          )
-
-        if (
-          card?.className ===
-            '.login-card' &&
-          !card!.contains(
-            ev.target as Element
-          )
-        ) {
-          this.expand = false
-          window.removeEventListener(
-            'click',
-            onOutsideClick
-          )
-        }
-      }
-
-      if (this.expand) {
-        window.addEventListener(
-          'click',
-          onOutsideClick
-        )
-      }
-    },
-  },
 })
 </script>
 
@@ -89,17 +60,17 @@ export default Vue.extend({
 .app-bar-cols {
   padding: 0px !important;
   display: flex;
-  flex-direction: column;
+  box-shadow: 0 0 0;
 }
+
+.btn-item {
+  contain: initial;
+  overflow: visible;
+}
+
 .login-card {
-  position: absolute;
-  right: 90px;
-  top: 40px;
 }
 .cart-card {
-  position: absolute;
-  right: 90px;
-  top: 40px;
 }
 </style>
 

@@ -1,68 +1,63 @@
 <template>
-  <div>
-    <v-card
-      color="primary"
-      width="300px"
-      height="240px"
+  <v-card
+    color="primary"
+    width="300px"
+    height="240px"
+  >
+    <div class="triangle"></div>
+    <v-card-title
+      class="secondary--text"
     >
-      <div class="triangle"></div>
-      <v-card-title
-        class="secondary--text"
-      >
-        로그인이 필요한 메뉴입니다.
-      </v-card-title>
-		<v-form>
-        <v-col
-          ><v-text-field
-            v-model="email"
-            label="이메일"
-            required
-            dense
-            class="login-text-field"
+      로그인이 필요한 메뉴입니다.
+    </v-card-title>
+    <v-form>
+      <v-col
+        ><v-text-field
+          v-model="email"
+          label="이메일"
+          required
+          dense
+          class="login-text-field"
+          color="secondary"
+        />
+        <v-text-field
+          v-model="password"
+          label="비밀번호"
+          type="password"
+          required
+          dense
+          class="login-text-field"
+          color="secondary"
+        />
+        <v-row justify="space-between">
+          <v-btn
+            v-ripple="false"
             color="secondary"
-          />
-          <v-text-field
-            v-model="password"
-            label="비밀번호"
-            type="password"
-            required
-            dense
-            class="login-text-field"
+            class="primary--text"
+            >가입하기</v-btn
+          >
+          <v-btn
+            v-ripple="false"
             color="secondary"
-          />
-          <v-row
-            justify="space-between"
+            class="primary--text"
+            @click="
+              $api.login(
+                email,
+                password
+              )
+            "
+            >로그인</v-btn
           >
-            <v-btn
-              v-ripple="false"
-              color="secondary"
-              class="primary--text"
-              >가입하기</v-btn
-            >
-            <v-btn
-              v-ripple="false"
-              color="secondary"
-              class="primary--text"
-              @click="
-                $api.login(
-                  email,
-                  password
-
-                )
-              "
-              >로그인</v-btn
-            >
-          </v-row>
-          <span
-            class="secondary--text ask"
-            ><a>이메일 </a>혹은<a>
-              비밀번호</a
-            >를 잊으셨습니까?</span
-          >
-        </v-col>
-      </v-form>
-    </v-card>
-  </div>
+        </v-row>
+        <span
+          class="secondary--text ask"
+          ><a>이메일 </a>혹은<a>
+            비밀번호</a
+          >를 잊으셨습니까?</span
+        >
+      </v-col>
+    </v-form>
+  </v-card>
 </template>
 <script>
 import Vue from 'vue'
@@ -112,8 +107,8 @@ export default Vue.extend({
     height: 0px;
     position: absolute;
     top: -14px;
-
     right: 0px;
+    z-index: 12;
     border-left: 35px solid transparent;
     border-right: 35px solid transparent;
     border-bottom: 15px solid #363636;
