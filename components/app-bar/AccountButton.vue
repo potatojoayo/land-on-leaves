@@ -36,10 +36,5 @@ export default Vue.extend({
   display: flex;
   flex-direction: column;
 }
-.login-card {
-  position: absolute;
-  right: 90px;
-  top: 40px;
-}
 </style>
 
