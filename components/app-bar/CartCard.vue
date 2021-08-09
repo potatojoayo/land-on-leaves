@@ -152,9 +152,8 @@ export default {
 .cart-card {
   position: absolute;
   right: -15px;
-  top: 40px;
+  top: 42px;
   width: 100vw;
-  border-top: 1px solid #d8cfc7;
 }
 
 .left-card {
@@ -207,7 +206,7 @@ export default {
   }
 
   .button {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .total-price {
