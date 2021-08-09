@@ -58,6 +58,7 @@
       <div class="app-bar-btns">
         <v-btn
           v-ripple="false"
+          class="bulb"
           icon
           plain
           @click="toggleTheme()"

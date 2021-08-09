@@ -22,9 +22,11 @@ export const actions = {
       const accountButton = document.querySelector(
         '.account-button'
       )
+      const bulb = document.querySelector('.bulb')
       if (
         !loginCard.contains(event.target) &&
-        !accountButton.contains(event.target)
+        !accountButton.contains(event.target) &&
+        !bulb.contains(event.target)
       ) {
         window.removeEventListener('click', onOutsideClick)
         commit('closeCards')
@@ -47,9 +49,11 @@ export const actions = {
       const cartCard = document.querySelector('.cart-card')
       const cartButton =
         document.querySelector('.cart-button')
+      const bulb = document.querySelector('.bulb')
       if (
         !cartCard.contains(event.target) &&
-        !cartButton.contains(event.target)
+        !cartButton.contains(event.target) &&
+        !bulb.contains(event.target)
       ) {
         commit('closeCards')
         window.removeEventListener('click', onOutsideClick)
