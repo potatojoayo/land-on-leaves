@@ -31,16 +31,24 @@
       <div class="color-icon"></div>
     </v-list-item>
 
-    <v-list-item>
-      <v-row>
+    <v-list-item class="primary--text count">
+      <v-btn icon>
         <v-icon class="mr-1"> mdi-minus-box</v-icon>
-        1
+      </v-btn>
+      <span>1</span>
+      <v-btn icon>
         <v-icon class="ml-1"> mdi-plus-box</v-icon>
-      </v-row>
+      </v-btn>
     </v-list-item>
 
     <v-list-item>
-      <div class="price">₩ 355,2000</div>
+      <div class="price primary--text">₩ 355,2000</div>
+    </v-list-item>
+
+    <v-list-item>
+      <v-btn icon>
+        <v-icon>mdi-window-close</v-icon>
+      </v-btn>
     </v-list-item>
   </v-card>
 </template>
@@ -52,19 +60,36 @@ export default {}
 <style lang='scss' scoped>
 .cart-item {
   display: flex;
-  width: 100%;
+  width: 95%;
   height: 200px;
   align-items: center;
 }
 .image-container {
   position: relative;
 }
+
 img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.v-list-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  span {
+    margin-bottom: 3px;
+  }
+}
+
+.count {
+  font-size: 1.2rem;
+}
+
 .v-list-item__title {
   font-size: 1.5rem;
 }
@@ -81,5 +106,9 @@ img {
   font-size: 1.3rem;
   display: flex;
   justify-content: center;
+}
+
+.price {
+  font-size: 1.2rem;
 }
 </style>

@@ -13,10 +13,8 @@ $shadow-color-dark: rgba(0, 0, 0, 0.8);
   }
 }
 .menuable__content__active {
-  box-shadow: 1px 1px 3px
-    $shadow-color-light !important;
+  box-shadow: 1px 1px 3px $shadow-color-light !important;
 }
 .menuable__content__active.theme--dark {
-  box-shadow: 1px 1px 3px
-    $shadow-color-dark !important;
+  box-shadow: 1px 1px 3px $shadow-color-dark !important;
 }
