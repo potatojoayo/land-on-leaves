@@ -39,9 +39,9 @@
             <div class="pa-0 column">
               <div class="item-row">
                 <div class="title-container item">
-                  <div-title class="secondary--text title">
+                  <div class="secondary--text title">
                     Summary
-                  </div-title>
+                  </div>
                   <v-btn
                     icon
                     color="secondary"

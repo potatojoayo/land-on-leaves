@@ -12,57 +12,57 @@ export const getters = {
   },
 }
 
+let handler
+
 export const actions = {
   toggleLoginCard({ commit, state }) {
+    const onOutsideClick = (event) => {
+      const loginCard =
+        document.querySelector('.login-card')
+      const accountButton = document.querySelector(
+        '.account-button'
+      )
+      if (
+        !loginCard.contains(event.target) &&
+        !accountButton.contains(event.target)
+      ) {
+        window.removeEventListener('click', onOutsideClick)
+        commit('closeCards')
+      }
+    }
+
     if (state.isLoginCardOpen) {
+      window.removeEventListener('click', onOutsideClick)
       commit('closeCards')
     } else {
       commit('openLoginCard')
-      const onOutsideClick = (event) => {
-        const loginCard =
-          document.querySelector('.login-card')
-        const accountButton = document.querySelector(
-          '.account-button'
-        )
-        if (
-          !loginCard.contains(event.target) &&
-          !accountButton.contains(event.target)
-        ) {
-          commit('closeCards')
-          window.removeEventListener(
-            'click',
-            onOutsideClick
-          )
-        }
-      }
-
-      window.addEventListener('click', onOutsideClick)
+      window.removeEventListener('click', handler)
+      handler = onOutsideClick
+      window.addEventListener('click', handler, false)
     }
   },
 
   toggleCartCard({ commit, state }) {
+    const onOutsideClick = (event) => {
+      const cartCard = document.querySelector('.cart-card')
+      const cartButton =
+        document.querySelector('.cart-button')
+      if (
+        !cartCard.contains(event.target) &&
+        !cartButton.contains(event.target)
+      ) {
+        commit('closeCards')
+        window.removeEventListener('click', onOutsideClick)
+      }
+    }
     if (state.isCartCardOpen) {
       commit('closeCards')
+      window.removeEventListener('click', onOutsideClick)
     } else {
       commit('openCartCard')
-      const onOutsideClick = (event) => {
-        const cartCard =
-          document.querySelector('.cart-card')
-        const cartButton =
-          document.querySelector('.cart-button')
-        if (
-          !cartCard.contains(event.target) &&
-          !cartButton.contains(event.target)
-        ) {
-          commit('closeCards')
-          window.removeEventListener(
-            'click',
-            onOutsideClick
-          )
-        }
-      }
-
-      window.addEventListener('click', onOutsideClick)
+      window.removeEventListener('click', handler)
+      handler = onOutsideClick
+      window.addEventListener('click', handler)
     }
   },
 }
