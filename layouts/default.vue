@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <v-app-bar
-      clipped-left
       app
       color="secondary"
       height="50"
@@ -11,11 +10,6 @@
         light: !isDark,
       }"
     >
-      <v-app-bar-nav-icon
-        v-show="$vuetify.breakpoint.mobile"
-        color="primary"
-        @click="drawer = !drawer"
-      />
       <v-app-bar-title class="pa-0">
         <v-btn
           v-ripple="false"
@@ -52,28 +46,6 @@
       </div>
     </v-app-bar>
 
-    <v-navigation-drawer
-      v-model="drawer"
-      clipped
-      app
-      color="secondary"
-    >
-      <v-autocomplete
-        class="navigation-search-bar"
-        prepend-inner-icon="mdi-magnify"
-        hide-details="true"
-        placeholder="상품검색"
-        flat
-      >
-      </v-autocomplete>
-      <v-list
-        ><GroupItem
-          v-for="groupItem in groupItems"
-          :key="groupItem.title"
-          :item="groupItem"
-        />
-      </v-list>
-    </v-navigation-drawer>
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
@@ -87,20 +59,17 @@
 <script lang="ts">
 import Vue from 'vue'
 import TabItem from '../components/app-bar/TabItem.vue'
-import GroupItem from '../components/navigation-drawer/GroupItem.vue'
 import AccountButton from '../components/app-bar/AccountButton.vue'
 import CartButton from '../components/app-bar/CartButton.vue'
 
 export default Vue.extend({
   components: {
     TabItem,
-    GroupItem,
     AccountButton,
     CartButton,
   },
   data() {
     return {
-      drawer: null,
       tabItems: [
         { name: 'Home', to: '/' },
         { name: 'Shop', to: '/shop' },
