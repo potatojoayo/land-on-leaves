@@ -1,27 +1,5 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      clipped
-      permanent
-      app
-      color="secondary"
-    >
-      <v-autocomplete
-        class="navigation-search-bar"
-        prepend-inner-icon="mdi-magnify"
-        hide-details="true"
-        placeholder="상품검색"
-        flat
-      >
-      </v-autocomplete>
-      <v-list
-        ><GroupItem
-          v-for="groupItem in groupItems"
-          :key="groupItem.title"
-          :item="groupItem"
-        />
-      </v-list>
-    </v-navigation-drawer>
     <v-app-bar
       clipped-left
       app
@@ -33,7 +11,12 @@
         light: !isDark,
       }"
     >
-      <v-app-bar-title>
+      <v-app-bar-nav-icon
+        v-show="$vuetify.breakpoint.mobile"
+        color="primary"
+        @click="drawer = !drawer"
+      />
+      <v-app-bar-title class="pa-0">
         <v-btn
           v-ripple="false"
           text
@@ -69,6 +52,28 @@
       </div>
     </v-app-bar>
 
+    <v-navigation-drawer
+      v-model="drawer"
+      clipped
+      app
+      color="secondary"
+    >
+      <v-autocomplete
+        class="navigation-search-bar"
+        prepend-inner-icon="mdi-magnify"
+        hide-details="true"
+        placeholder="상품검색"
+        flat
+      >
+      </v-autocomplete>
+      <v-list
+        ><GroupItem
+          v-for="groupItem in groupItems"
+          :key="groupItem.title"
+          :item="groupItem"
+        />
+      </v-list>
+    </v-navigation-drawer>
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
@@ -95,6 +100,7 @@ export default Vue.extend({
   },
   data() {
     return {
+      drawer: null,
       tabItems: [
         { name: 'Home', to: '/' },
         { name: 'Shop', to: '/shop' },
@@ -140,12 +146,11 @@ export default Vue.extend({
 <style scoped>
 .v-app-bar.dark {
   border-bottom: 1px solid #d8cfc7 !important;
-  z-index: 10 !important;
 }
 .v-app-bar.light {
   border-bottom: 1px solid #707070 !important;
-  z-index: 10 !important;
 }
+
 .navigation-search-bar {
   padding-top: 0;
 }
