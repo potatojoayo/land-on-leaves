@@ -33,7 +33,7 @@
 </template>
 
 
-<script lang="ts">
+<script >
 import Vue from 'vue'
 import LoginCard from './LoginCard.vue'
 import CartCard from './CartCard.vue'
@@ -48,6 +48,7 @@ export default Vue.extend({
       required: true,
     },
   },
+
   data() {
     return {
       expand: false,

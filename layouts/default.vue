@@ -60,7 +60,7 @@
           v-ripple="false"
           icon
           plain
-          class="include"
+          class="bulb"
           @click="toggleTheme"
           ><v-icon
             >mdi-lightbulb</v-icon
