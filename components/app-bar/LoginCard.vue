@@ -71,7 +71,7 @@ export default Vue.extend({
   },
 })
 </script>
-<style lang='scss'>
+<style  lang='scss' >
 .login-card {
   .v-card {
     border-radius: 0 3px 5px 5px !important;
@@ -92,7 +92,6 @@ export default Vue.extend({
       color: #0096c7;
     }
   }
-
   button {
     span {
       font-size: 1rem;
@@ -102,22 +101,6 @@ export default Vue.extend({
   .ask {
     margin-top: 20px;
   }
-  .triangle {
-    width: 0px;
-    height: 0px;
-    position: absolute;
-    top: -14px;
-    right: 0px;
-    z-index: 12;
-    border-left: 35px solid transparent;
-    border-right: 35px solid transparent;
-    border-bottom: 15px solid #363636;
-  }
-
-  .theme--dark .triangle {
-    border-bottom-color: #d8cfc7;
-  }
-
   .login-text-field.theme--dark {
     label {
       color: #808080 !important;
@@ -167,6 +150,25 @@ export default Vue.extend({
   input[type='password'] {
     color: #d8cfc7 !important;
     font-family: 'Roboto';
+  }
+
+  .triangle {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top: -15px;
+    right: 0px;
+    z-index: 12;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+
+    border-bottom: 15px solid #363636;
+  }
+}
+
+.theme--dark.login-card {
+  .triangle {
+    border-bottom: 15px solid #d8cfc7;
   }
 }
 </style>

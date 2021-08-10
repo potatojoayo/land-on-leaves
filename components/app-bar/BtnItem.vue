@@ -5,8 +5,8 @@
       :close-on-content-click="false"
       transition="slide-x-transition"
       :absolute="true"
-      :position-x="1520"
       :position-y="50"
+      max-width="100vw"
     >
       <template
         #activator="{ attrs, on }"
@@ -56,18 +56,26 @@ export default Vue.extend({
 })
 </script>
 
-<style  scoped>
+<style  scoped lang="scss">
 .app-bar-cols {
   padding: 0px !important;
   display: flex;
-  box-shadow: 0 0 0;
+  box-shadow: 0 0 0 !important;
 }
 
 .btn-item {
   contain: initial;
   overflow: visible;
-}
+  /*어거지로 패딩으로 가리는 효과를 입혔다ㅠㅠㅠ*/
+  padding: 0 85px 0 0 !important;
 
+  box-shadow: 0 0 0 !important;
+}
+.theme--dark {
+  .btn-item {
+    box-shadow: 0 0 0 !important;
+  }
+}
 .login-card {
 }
 .cart-card {
