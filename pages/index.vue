@@ -9,6 +9,7 @@
             autoplay
             loop
             muted
+            height="100%"
           />
         </v-col>
         <v-col class="first-row-right-col">
@@ -41,6 +42,8 @@ export default Vue.extend({})
 <style lang='scss' scoped>
 .main-page {
   .first-row {
+    border-bottom: 1px solid #363636 !important;
+
     .first-row-right-col {
       display: flex;
       flex-direction: column;
@@ -69,13 +72,20 @@ export default Vue.extend({})
     flex-direction: column;
     .label {
       margin-top: 100px;
-      background: red;
       width: max-content;
       font-size: 2rem;
       border-radius: 0 0 0 0 !important;
     }
     .temp {
       height: 100vh;
+    }
+  }
+}
+
+.theme--dark {
+  .main-page {
+    .first-row {
+      border-bottom: 1px solid #d8cfc7 !important;
     }
   }
 }
