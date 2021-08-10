@@ -19,7 +19,7 @@
     "coreapi": "^0.1.1",
     "js-cookie": "^3.0.0",
     "nuxt": "^2.15.7",
-    "vuetify": "^2.5.5"
+    "vuetify": "git://github.com/pavk96/vuetify.git"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",
