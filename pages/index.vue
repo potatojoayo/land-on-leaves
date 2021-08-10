@@ -28,7 +28,12 @@
           color="primary"
           >FIND YOUR WEAR</v-card
         >
-        <div class="temp"></div>
+        <div class="products">
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+          <ProductItem />
+        </div>
       </v-row>
     </v-col>
   </div>
@@ -36,7 +41,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
-export default Vue.extend({})
+import ProductItem from '../components/product/ProductItem.vue'
+export default Vue.extend({
+  components: {
+    ProductItem,
+  },
+})
 </script>
 
 <style lang='scss' scoped>
@@ -78,6 +88,11 @@ export default Vue.extend({})
     }
     .temp {
       height: 100vh;
+    }
+
+    .products {
+      display: flex;
+      margin-top: 100px;
     }
   }
 }
