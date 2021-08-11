@@ -83,6 +83,9 @@
         <router-view></router-view>
       </v-container>
     </v-main>
+    <v-footer app color="primary secondary--text">
+      ©2021 LAND ON LEAVES all right reserved
+    </v-footer>
   </v-app>
 </template>
 <script lang="ts">
@@ -216,5 +219,15 @@ export default Vue.extend({
   .v-icon {
     color: #d8cfc7 !important;
   }
+}
+.v-footer {
+  display: flex;
+  justify-content: center;
+  font-family: 'Space Mono';
+  font-size: 0.9rem;
+}
+
+body {
+  background: #363636;
 }
 </style>
