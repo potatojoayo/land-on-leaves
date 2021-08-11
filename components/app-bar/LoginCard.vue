@@ -63,7 +63,7 @@ export default Vue.extend({
 <style lang='scss'>
 .login-card {
   position: absolute;
-  right: 90px;
+  right: 65px;
   top: 41px;
   .v-card {
     border-radius: 0 3px 5px 5px !important;
