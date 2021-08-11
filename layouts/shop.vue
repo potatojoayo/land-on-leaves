@@ -143,7 +143,7 @@ export default Vue.extend({
   },
 })
 </script>
-<style scoped>
+<style lang="scss">
 .v-app-bar.dark {
   border-bottom: 1px solid #d8cfc7 !important;
 }
@@ -199,5 +199,13 @@ export default Vue.extend({
 }
 .mdi-lightbulb {
   top: -5px;
+}
+.v-main {
+  background-color: #d8cfc7;
+}
+.theme--dark {
+  .v-main {
+    background-color: #363636;
+  }
 }
 </style>

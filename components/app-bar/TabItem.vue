@@ -1,12 +1,10 @@
 <template>
-  <v-tab
-    v-ripple="false"
-    :to="item.to"
-    >{{ item.name }}</v-tab
-  >
+  <v-tab v-ripple="false" :to="item.to">{{
+    item.name
+  }}</v-tab>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue, { PropOptions } from 'vue'
 
 interface TabItem {
