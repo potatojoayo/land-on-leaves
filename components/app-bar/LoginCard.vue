@@ -28,13 +28,13 @@
             <v-btn
               v-ripple="false"
               color="secondary"
-              class="primary--text"
+              class="primary--text pa-3"
               >가입하기</v-btn
             >
             <v-btn
               v-ripple="false"
               color="secondary"
-              class="primary--text"
+              class="primary--text pa-3"
               @click="$api.login(email, password)"
               >로그인</v-btn
             >
@@ -68,6 +68,10 @@ export default Vue.extend({
   .v-card {
     border-radius: 0 3px 5px 5px !important;
     padding: 5px;
+  }
+
+  .v-btn__content {
+    font-family: 'BMHANNAPro' !important;
   }
   .v-card__title {
     font-family: 'BMHANNAPro';

@@ -180,8 +180,16 @@ export default {
   border-radius: 0 !important;
   height: 100% !important;
 
+  * {
+    font-family: 'Space Mono';
+  }
+
   .korean {
     font-family: 'BMHANNAPro';
+  }
+
+  .v-btn__content {
+    font-family: 'BMHANNAPro' !important;
   }
 
   .v-list-item {

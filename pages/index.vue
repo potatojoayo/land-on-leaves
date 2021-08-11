@@ -13,11 +13,13 @@
           />
         </v-col>
         <v-col class="first-row-right-col">
-          <div class="name">Pasley Dress</div>
-          <div class="brand">Christy Dawn</div>
+          <div class="name primary--text">Pasley Dress</div>
+          <div class="brand primary--text">
+            Christy Dawn
+          </div>
           <v-btn
             color="primary"
-            class="secondary--text pt-2 pb-2"
+            class="secondary--text pa-6"
             >둘러보기</v-btn
           >
         </v-col>
@@ -54,11 +56,17 @@ export default Vue.extend({
   .first-row {
     border-bottom: 1px solid #363636 !important;
 
+    video {
+      min-width: 100%;
+      min-height: 100%;
+    }
+
     .first-row-right-col {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      min-height: 110vh;
 
       button {
         margin-bottom: 100px;
@@ -103,5 +111,8 @@ export default Vue.extend({
       border-bottom: 1px solid #d8cfc7 !important;
     }
   }
+}
+* {
+  font-family: 'Space Mono';
 }
 </style>
