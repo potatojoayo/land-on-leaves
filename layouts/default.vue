@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-app-bar
+      clipped-left
       app
       color="secondary"
       height="50"
@@ -10,6 +11,11 @@
         light: !isDark,
       }"
     >
+      <v-app-bar-nav-icon
+        v-show="$vuetify.breakpoint.mobile"
+        color="primary"
+        @click="drawer = !drawer"
+      />
       <v-app-bar-title class="pa-0">
         <v-btn
           v-ripple="false"
@@ -46,6 +52,29 @@
       </div>
     </v-app-bar>
 
+    <v-navigation-drawer
+      v-if="$nuxt.$route.path.toString().includes('/shop')"
+      v-model="drawer"
+      clipped
+      app
+      color="secondary"
+    >
+      <v-autocomplete
+        class="navigation-search-bar"
+        prepend-inner-icon="mdi-magnify"
+        hide-details="true"
+        placeholder="상품검색"
+        flat
+      >
+      </v-autocomplete>
+      <v-list
+        ><GroupItem
+          v-for="groupItem in groupItems"
+          :key="groupItem.title"
+          :item="groupItem"
+        />
+      </v-list>
+    </v-navigation-drawer>
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
@@ -54,22 +83,28 @@
         <router-view></router-view>
       </v-container>
     </v-main>
+    <v-footer app color="primary secondary--text">
+      ©2021 LAND ON LEAVES all right reserved
+    </v-footer>
   </v-app>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 import TabItem from '../components/app-bar/TabItem.vue'
+import GroupItem from '../components/navigation-drawer/GroupItem.vue'
 import AccountButton from '../components/app-bar/AccountButton.vue'
 import CartButton from '../components/app-bar/CartButton.vue'
 
 export default Vue.extend({
   components: {
     TabItem,
+    GroupItem,
     AccountButton,
     CartButton,
   },
   data() {
     return {
+      drawer: true,
       tabItems: [
         { name: 'Home', to: '/' },
         { name: 'Shop', to: '/shop' },
@@ -112,14 +147,7 @@ export default Vue.extend({
   },
 })
 </script>
-<style scoped>
-.v-app-bar.dark {
-  border-bottom: 1px solid #d8cfc7 !important;
-}
-.v-app-bar.light {
-  border-bottom: 1px solid #707070 !important;
-}
-
+<style lang='scss'>
 .navigation-search-bar {
   padding-top: 0;
 }
@@ -168,5 +196,38 @@ export default Vue.extend({
 }
 .mdi-lightbulb {
   top: -5px;
+}
+
+.v-main {
+  background: #d8cfc7;
+}
+
+.theme--dark {
+  .v-main {
+    background: #363636;
+  }
+}
+
+.v-toolbar__content {
+  border-bottom: 1px solid #363636;
+}
+
+.theme--dark {
+  .v-toolbar__content {
+    border-bottom: 1px solid #d8cfc7;
+  }
+  .v-icon {
+    color: #d8cfc7 !important;
+  }
+}
+.v-footer {
+  display: flex;
+  justify-content: center;
+  font-family: 'Space Mono';
+  font-size: 0.9rem;
+}
+
+body {
+  background: #363636;
 }
 </style>

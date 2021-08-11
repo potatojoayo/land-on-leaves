@@ -3,7 +3,7 @@
     <div class="image-container">
       <img src="~assets/images/knit.png" alt="product" />
     </div>
-    <div class="information">
+    <div class="information primary--text secondary">
       <div class="descript">
         <div class="name">The Alice Dress</div>
         <div class="brand">Christy Dawn</div>
@@ -18,8 +18,18 @@ export default {}
 </script>
 
 <style lang='scss' scoped>
+.theme--dark {
+  .product {
+    border-color: #d8cfc7 !important;
+  }
+  .information {
+    border-color: #d8cfc7 !important;
+  }
+}
 .product {
   border-radius: 0 0 0 0 !important;
+  background: transparent;
+  box-shadow: none !important;
   width: 25vw;
   height: 36vw;
   display: flex;
@@ -46,8 +56,8 @@ export default {}
     padding: 10px 20px;
     height: 90px;
     width: 100%;
-    background-color: #d8cfc7;
-    border-top: 1px solid #a0a0a0;
+    border-top: 1px solid #a0a0a0 !important;
+
     .name {
       font-size: 1.5rem;
     }

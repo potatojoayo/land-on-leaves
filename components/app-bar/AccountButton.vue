@@ -30,11 +30,14 @@ export default Vue.extend({
 })
 </script>
 
-<style  scoped>
+<style lang='scss' >
 .app-bar-cols {
   padding: 0px !important;
   display: flex;
   flex-direction: column;
+  .v-btn__content {
+    font-family: 'Space Mono';
+  }
 }
 </style>
 

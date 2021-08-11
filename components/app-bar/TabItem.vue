@@ -1,7 +1,10 @@
 <template>
-  <v-tab v-ripple="false" :to="item.to">{{
-    item.name
-  }}</v-tab>
+  <v-tab
+    v-ripple="false"
+    class="app-bar-tab"
+    :to="item.to"
+    >{{ item.name }}</v-tab
+  >
 </template>
 
 <script lang="ts">
@@ -21,8 +24,16 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
-.v-tab {
+<style lang="scss">
+.app-bar-tab {
   margin: 0 5px;
+  font-family: 'Space Mono';
+  width: 55px !important;
+  min-width: 0px !important;
+  padding: 0 0px !important;
+  margin: 0 !important;
+}
+.v-tabs-slider-wrapper {
+  height: 1px !important;
 }
 </style>
