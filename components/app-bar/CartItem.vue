@@ -1,5 +1,9 @@
 <template>
-  <v-card class="cart-item pl-3" elevation="0">
+  <v-card
+    class="cart-item pl-3"
+    elevation="0"
+    color="secondary"
+  >
     <v-list-item>
       <v-card
         class="image-container"
@@ -57,58 +61,63 @@
 export default {}
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss' >
 .cart-item {
   display: flex;
   width: 95%;
   height: 200px;
   align-items: center;
-}
-.image-container {
-  position: relative;
-}
 
-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.v-list-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-
-  span {
-    margin-bottom: 3px;
+  * {
+    font-family: 'Space Mono';
   }
-}
 
-.count {
-  font-size: 1.2rem;
-}
+  .image-container {
+    position: relative;
+  }
 
-.v-list-item__title {
-  font-size: 1.5rem;
-}
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-.color-icon {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #e2c8c8;
-  border: 1px solid #707070;
-}
-.size {
-  font-family: 'Space Mono';
-  font-size: 1.3rem;
-  display: flex;
-  justify-content: center;
-}
+  .v-list-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-.price {
-  font-size: 1.2rem;
+    span {
+      margin-bottom: 3px;
+    }
+  }
+
+  .count {
+    font-size: 1.2rem;
+  }
+
+  .v-list-item__title {
+    font-size: 1.5rem;
+  }
+
+  .color-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e2c8c8;
+    border: 1px solid #707070;
+  }
+  .size {
+    font-family: 'Space Mono';
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .price {
+    font-size: 1.2rem;
+  }
 }
 </style>
