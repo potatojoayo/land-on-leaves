@@ -1,29 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      clipped
-      permanent
-      app
-      color="secondary"
-    >
-      <v-autocomplete
-        class="navigation-search-bar"
-        prepend-inner-icon="mdi-magnify"
-        hide-details="true"
-        placeholder="상품검색"
-        flat
-      >
-      </v-autocomplete>
-      <v-list
-        ><GroupItem
-          v-for="groupItem in groupItems"
-          :key="groupItem.title"
-          :item="groupItem"
-        />
-      </v-list>
-    </v-navigation-drawer>
     <v-app-bar
-      clipped-left
       app
       color="secondary"
       height="50"
@@ -33,7 +10,7 @@
         light: !isDark,
       }"
     >
-      <v-app-bar-title>
+      <v-app-bar-title class="pa-0">
         <v-btn
           v-ripple="false"
           text
@@ -58,18 +35,14 @@
       <div class="app-bar-btns">
         <v-btn
           v-ripple="false"
+          class="bulb"
           icon
           plain
           @click="toggleTheme()"
-          ><v-icon
-            >mdi-lightbulb</v-icon
-          ></v-btn
+          ><v-icon>mdi-lightbulb</v-icon></v-btn
         >
-        <BtnItem
-          v-for="btnItem in btnItems"
-          :key="btnItem"
-          :name="btnItem"
-        ></BtnItem>
+        <AccountButton />
+        <CartButton />
       </div>
     </v-app-bar>
 
@@ -81,23 +54,19 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-
-    <v-footer app>
-      <!-- -->
-    </v-footer>
   </v-app>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 import TabItem from '../components/app-bar/TabItem.vue'
-import BtnItem from '../components/app-bar/BtnItem.vue'
-import GroupItem from '../components/navigation-drawer/GroupItem.vue'
+import AccountButton from '../components/app-bar/AccountButton.vue'
+import CartButton from '../components/app-bar/CartButton.vue'
 
 export default Vue.extend({
   components: {
     TabItem,
-    BtnItem,
-    GroupItem,
+    AccountButton,
+    CartButton,
   },
   data() {
     return {
@@ -106,7 +75,6 @@ export default Vue.extend({
         { name: 'Shop', to: '/shop' },
         { name: 'About', to: '/about' },
       ],
-      btnItems: ['Account', 'Cart'],
       groupItems: [
         {
           title: 'CATEGORY',
@@ -122,9 +90,7 @@ export default Vue.extend({
         },
         {
           title: 'BRANDS',
-          children: [
-            { name: 'Christy' },
-          ],
+          children: [{ name: 'Christy' }],
         },
         {
           title: 'STANDARDS',
@@ -141,8 +107,7 @@ export default Vue.extend({
   },
   methods: {
     toggleTheme() {
-      this.$vuetify.theme.dark =
-        !this.$vuetify.theme.dark
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
     },
   },
 })
@@ -150,12 +115,11 @@ export default Vue.extend({
 <style scoped>
 .v-app-bar.dark {
   border-bottom: 1px solid #d8cfc7 !important;
-  z-index: 10 !important;
 }
 .v-app-bar.light {
   border-bottom: 1px solid #707070 !important;
-  z-index: 10 !important;
 }
+
 .navigation-search-bar {
   padding-top: 0;
 }
