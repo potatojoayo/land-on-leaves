@@ -29,7 +29,7 @@
       <v-tabs
         centered
         height="40%"
-        slider-size="1.5"
+        slider-size="1"
         slider-color="primary"
       >
         <TabItem
@@ -163,7 +163,6 @@ export default Vue.extend({
   bottom: 0 !important;
   right: 0 !important;
   margin: auto !important;
-  width: max-content !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;

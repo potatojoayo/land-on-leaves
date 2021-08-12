@@ -26,12 +26,10 @@ export default Vue.extend({
 
 <style lang='scss'>
 .app-bar-tab {
-  margin: 0 5px;
+  margin: 0 3px !important;
   font-family: 'Space Mono';
-  width: 55px !important;
   min-width: 0px !important;
   padding: 0 0px !important;
-  margin: 0 !important;
 }
 .v-tabs-slider-wrapper {
   height: 1px !important;
