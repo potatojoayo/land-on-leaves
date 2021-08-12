@@ -83,7 +83,7 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-    <v-footer app color="primary secondary--text">
+    <v-footer app absolute color="primary secondary--text">
       ©2021 LAND ON LEAVES all right reserved
     </v-footer>
   </v-app>
@@ -192,7 +192,7 @@ export default Vue.extend({
   right: 15px;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 }
 .mdi-lightbulb {
   top: -5px;
