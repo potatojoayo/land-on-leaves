@@ -88,10 +88,11 @@ export default Vue.extend({
 
       button {
         margin-bottom: 100px;
-        margin-top: 10px;
+        margin-top: 20px;
         font-family: 'BMHANNAPro';
         font-size: 1.3rem;
         min-height: 50px;
+        border-radius: 0 !important;
       }
 
       .name {
@@ -127,7 +128,7 @@ export default Vue.extend({
     height: 100vh !important;
     border-top: 1px solid #363636;
     margin-top: 200px !important;
-    overflow-y: hidden;
+    overflow: hidden;
     .third-row-left-col {
       display: flex;
       flex-direction: column;

@@ -29,7 +29,7 @@
       <v-tabs
         centered
         height="40%"
-        slider-size="1.5"
+        slider-size="1"
         slider-color="primary"
       >
         <TabItem
@@ -83,7 +83,7 @@
         <router-view></router-view>
       </v-container>
     </v-main>
-    <v-footer app color="primary secondary--text">
+    <v-footer app absolute color="primary secondary--text">
       ©2021 LAND ON LEAVES all right reserved
     </v-footer>
   </v-app>
@@ -163,7 +163,6 @@ export default Vue.extend({
   bottom: 0 !important;
   right: 0 !important;
   margin: auto !important;
-  width: max-content !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -192,7 +191,7 @@ export default Vue.extend({
   right: 15px;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 }
 .mdi-lightbulb {
   top: -5px;
