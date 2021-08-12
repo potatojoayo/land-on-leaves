@@ -48,7 +48,7 @@
                     class="close"
                     @click="close()"
                   >
-                    <v-icon large>
+                    <v-icon large color="secondary">
                       mdi-window-close
                     </v-icon>
                   </v-btn>
@@ -268,7 +268,7 @@ export default {
   height: 0px;
   position: absolute;
   top: -15px;
-  right: 18px;
+  right: 14px;
   border-left: 35px solid transparent;
   border-right: 35px solid transparent;
   border-bottom: 15px solid #363636;
