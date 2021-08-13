@@ -1,11 +1,9 @@
 <template>
   <div>
     <v-parallax
-      v-for="(item, index) in itemList"
-      :key="index"
       height="950"
+      :src="require(`@/assets/images/${img}.png`)"
       :class="'image' + index"
-      :src="require(`@/assets/images/${item.img}.png`)"
       @scroll="handleScroll"
     >
       <div
@@ -15,13 +13,11 @@
           primary--text
         "
       >
-        <h4 class="subheading">
-          {{ item.textList[1] }}
-        </h4>
-        <pre class="about-description">
-          {{ item.textList[0] }}
-        </pre>
-        <button>{{ item.textList[2] }}</button>
+        <h4 class="subheading">{{ textList[1] }}</h4>
+        <pre class="about-description">{{
+          textList[0]
+        }}</pre>
+        <button>{{ textList[2] }}</button>
       </div>
     </v-parallax>
   </div>
@@ -29,90 +25,13 @@
 
 <script>
 export default {
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-  methods: {
-    handleScroll(event) {
-      const scrollTop =
-        document.querySelector(`.image0`).scrollHeight //950
-      const pageNumber = Math.round(
-        window.scrollY / scrollTop
-      )
-      const image = document.querySelector(
-        `.image${pageNumber}`
-      ).childNodes[1].childNodes[0].classList
+  props: {
+    img: { type: String, required: true },
+    textList: { type: Array, required: true },
 
-      if (
-        scrollTop / 100 < window.scrollY % scrollTop &&
-        pageNumber > 0
-      ) {
-        image.remove('invisible')
-        image.add('visible')
-      }
-    },
+    index: { type: Number, required: true },
   },
-  data() {
-    return {
-      itemList: [
-        {
-          img: 'leap',
-          textList: [
-            '자연은 우리의 소유물이 아닙니다.',
-            'LANDONLEAVES',
-          ],
-        },
-        {
-          img: 'smoke',
-          textList: ['환경은 끊임없이 파괴되고 있습니다.'],
-        },
-        {
-          img: 'onsilgas',
-          textList: [
-            '전 세계 온실가스 배출량의 10%가 패션 산업에서 나옵니다.',
-          ],
-        },
-        {
-          img: 'trash_clothes',
-          textList: [
-            `패스트패션의 영향으로
-	매년 약 10억 벌 가량의 옷이 버려집니다.`,
-          ],
-        },
-        {
-          img: 'trash_plastics',
-          textList: [
-            '버려진 옷으로부터 쏟아져 나온 플라스틱 폐기물들은 바다를 더럽힙니다.',
-          ],
-        },
-        {
-          img: 'unethical_work',
-          textList: [
-            `			환경오염 뿐만이 아닙니다.
-비윤리적인 노동 착취 또한 공공연하게 행해집니다.`,
-          ],
-        },
-        {
-          img: 'leaves',
-          textList: [
-            `      저희 LAND ON LEAVES는
-			  모두가 건강하게 공존하는 세상을 지향합니다.
 
-              저희는 윤리적이고 자연친화적인
-			  생산과정을 통해 생산된 상품만을 소개해 드립니다.`,
-          ],
-        },
-        {
-          img: 'leavesinwater',
-          textList: [
-            '지속가능한 의류 산업에 저희와 함께 해 주세요.',
-            '',
-            '참여하기',
-          ],
-        },
-      ],
-    }
-  },
   mounted() {
     for (let i = 0; i < 3; i++) {
       document.querySelector(
@@ -130,8 +49,30 @@ export default {
       .querySelector(`.image0`)
       .querySelector('.description-container')
       .classList.add('visible')
-    console.log(document.querySelector('.image0'))
     window.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll)
+  },
+  methods: {
+    handleScroll() {
+      const scrollTop =
+        document.querySelector(`.image0`).scrollHeight
+      const pageNumber = Math.round(
+        window.scrollY / scrollTop
+      )
+      const image = document.querySelector(
+        `.image${pageNumber}`
+      ).childNodes[1].childNodes[0].classList
+
+      if (
+        scrollTop / 100 < window.scrollY % scrollTop &&
+        pageNumber > 0
+      ) {
+        image.remove('invisible')
+        image.add('visible')
+      }
+    },
   },
 }
 </script>
@@ -201,7 +142,7 @@ export default {
 }
 .image7 button {
   position: absolute;
-  bottom: 0;
+  top: 130%;
   right: 40%;
   color: #d8cfc7;
   background-color: #363636;
