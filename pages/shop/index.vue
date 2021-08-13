@@ -1,5 +1,8 @@
 <template>
-  <div>Shop</div>
+  <div>
+    <v-btn to="/shop/product"></v-btn>
+    Shop
+  </div>
 </template>
 
 <script>
