@@ -16,9 +16,11 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "@types/js-cookie": "^2.2.7",
     "core-js": "^3.15.1",
-    "coreapi": "^0.1.1",
+    "coreapi": "^0.0.3",
+    "dominant-color-converter": "^1.1.1",
     "js-cookie": "^3.0.0",
-    "nuxt": "^2.15.7",
+    "node-vibrant": "^3.2.1-alpha.1",
+    "nuxt": "^2.13.3",
     "vuetify": "^2.5.5"
   },
   "devDependencies": {

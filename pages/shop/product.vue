@@ -1,12 +1,19 @@
 <template>
   <div>
-    <ProductItemDetail></ProductItemDetail>
+    <ProductItemDetail
+      :productName="indrePants"
+    ></ProductItemDetail>
   </div>
 </template>
 
 <script>
 import ProductItemDetail from '../../components/product/ProductItemDetail.vue'
 export default {
+  data() {
+    return {
+      indrePants: 'indrePants',
+    }
+  },
   components: {
     ProductItemDetail,
   },
@@ -14,5 +21,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>
