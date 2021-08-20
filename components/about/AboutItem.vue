@@ -7,17 +7,15 @@
       @scroll="handleScroll"
     >
       <div
-        class="
-          invisible
-          description-container
-          primary--text
-        "
+        class="invisible description-container dark-text"
       >
         <h4 class="subheading">{{ textList[1] }}</h4>
         <pre class="about-description">{{
           textList[0]
         }}</pre>
-        <button>{{ textList[2] }}</button>
+        <router-link to="/shop" class="router">{{
+          textList[2]
+        }}</router-link>
       </div>
     </v-parallax>
   </div>
@@ -37,7 +35,7 @@ export default {
       document.querySelector(
         `.image${i + 3}`
       ).childNodes[1].childNodes[0].className =
-        'invisible description-container secondary--text'
+        'invisible description-container light-text'
     }
     window.scrollTo(0, 0)
     document
@@ -88,6 +86,12 @@ export default {
   transition-timing-function: ease;
   opacity: 1;
   transform: translateY(0);
+}
+.dark-text {
+  color: #363636;
+}
+.light-text {
+  color: #d8cfc7;
 }
 .about-description {
   font-size: 2.5rem;
@@ -140,7 +144,7 @@ export default {
   bottom: 12%;
   right: 20%;
 }
-.image7 button {
+.image7 .router {
   position: absolute;
   top: 130%;
   right: 40%;
@@ -150,5 +154,6 @@ export default {
   font-family: 'BMHANNApro';
   font-weight: 600;
   padding: 0 30px;
+  text-decoration: none;
 }
 </style>

@@ -43,51 +43,51 @@
       </pre>
       <p class="color-text">Color</p>
       <div class="color-btn">
-        <v-btn elevation="0"
-          ><v-icon style="color: #d8cfc7"
-            >mdi-checkbox-blank-circle</v-icon
-          ></v-btn
-        >
-        <v-btn elevation="0" color="secondary"
-          ><v-icon style="color: pink"
-            >mdi-checkbox-blank-circle</v-icon
+        <div v-for="(color, index) in colors" :key="index">
+          <v-btn
+            v-if="selectedColor"
+            elevation="0"
+            color="color"
+            @click="selectColor(index)"
           >
-        </v-btn>
+            <v-icon
+              >mdi-checkbox-blank-circle</v-icon
+            ></v-btn
+          >
+          <v-btn
+            v-else
+            elevation="0"
+            color="color"
+            @click="selectColor(index)"
+          >
+            <v-icon
+              >mdi-checkbox-blank-circle</v-icon
+            ></v-btn
+          >
+        </div>
       </div>
 
       <div class="size-content-container">
         <p class="size-text">Size</p>
         <div class="size-btn">
-          <v-btn
-            elevation="0"
-            class="size-btn secondary--text rounded-0"
-            color="primary"
-            >XS</v-btn
-          >
-          <v-btn
-            elevation="0"
-            class="size-btn primary--text rounded-0"
-            color="secondary"
-            >S</v-btn
-          >
-          <v-btn
-            elevation="0"
-            class="size-btn primary--text rounded-0"
-            color="secondary"
-            >M</v-btn
-          >
-          <v-btn
-            elevation="0"
-            class="size-btn primary--text rounded-0"
-            color="secondary"
-            >L</v-btn
-          >
-          <v-btn
-            elevation="0"
-            class="size-btn primary--text rounded-0"
-            color="secondary"
-            >XL</v-btn
-          >
+          <div v-for="(size, index) in sizes" :key="index">
+            <v-btn
+              v-if="selectedSize"
+              elevation="0"
+              class="size-btn secondary--text rounded-0"
+              color="primary"
+              @click="selectSize"
+              >{{ size }}</v-btn
+            >
+            <v-btn
+              v-else
+              elevation="0"
+              class="size-btn primary--text rounded-0"
+              color="secondary"
+              @click="selectSize"
+              >{{ size }}</v-btn
+            >
+          </div>
           <v-btn
             v-ripple="false"
             color="secondary"
@@ -202,12 +202,27 @@ export default {
   data() {
     return {
       hover: false,
+      selectedColor: false,
+      selectedSize: false,
       selectedBtn: true,
+
+      colors: ['red', 'pink', 'blue', 'purple'],
+      sizes: ['XS', 'S', 'M', 'L', 'XL'],
     }
   },
   methods: {
     goBack() {
       window.history.back()
+    },
+    selectColor(index) {
+      if (index) {
+        this.selectedColor = !this.selectedColor
+      }
+    },
+    selectSize(index) {
+      if (index) {
+        this.selectedSize = !this.selectedSize
+      }
     },
     changeContentReview() {
       if (!this.selectedBtn) {
@@ -283,6 +298,9 @@ export default {
   justify-content: start;
   align-items: center;
 }
+.color-btn * {
+  padding: 0 3px;
+}
 .color-btn .v-btn {
   min-width: 30px !important;
 }
@@ -295,9 +313,16 @@ export default {
   font-size: 1.5rem;
   margin-bottom: 0;
 }
+.size-btn {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
 .size-btn .v-btn {
   padding: 0 5px !important;
   min-width: 20px !important;
+  font-size: 1.2rem;
+  font-family: 'Space Mono';
 }
 .question-mark:hover {
   cursor: default;
