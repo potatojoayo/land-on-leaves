@@ -45,19 +45,10 @@
       <div class="color-btn">
         <div v-for="(color, index) in colors" :key="index">
           <v-btn
-            v-if="selectedColor"
             elevation="0"
-            color="color"
-            @click="selectColor(index)"
-          >
-            <v-icon
-              >mdi-checkbox-blank-circle</v-icon
-            ></v-btn
-          >
-          <v-btn
-            v-else
-            elevation="0"
-            color="color"
+            :style="{ color: color }"
+            :class="color + index"
+            color="secondary"
             @click="selectColor(index)"
           >
             <v-icon
@@ -72,19 +63,16 @@
         <div class="size-btn">
           <div v-for="(size, index) in sizes" :key="index">
             <v-btn
-              v-if="selectedSize"
               elevation="0"
-              class="size-btn secondary--text rounded-0"
-              color="primary"
-              @click="selectSize"
-              >{{ size }}</v-btn
-            >
-            <v-btn
-              v-else
-              elevation="0"
-              class="size-btn primary--text rounded-0"
               color="secondary"
-              @click="selectSize"
+              :class="
+                size +
+                index +
+                ' primary--text' +
+                ' rounded-0' +
+                ' size-btn'
+              "
+              @click="selectSize(index)"
               >{{ size }}</v-btn
             >
           </div>
@@ -215,13 +203,32 @@ export default {
       window.history.back()
     },
     selectColor(index) {
-      if (index) {
-        this.selectedColor = !this.selectedColor
+      const btn = document.querySelector(
+        `.${this.colors[index]}${index}`
+      ).classList
+      if (btn.contains('secondary')) {
+        btn.replace('secondary', 'primary')
+      } else {
+        btn.replace('primary', 'secondary')
+        btn.replace('secondary--text', 'primary--text')
+      }
+      if (btn.contains('primary--text')) {
+        btn.replace('primary--text', 'secondary--text')
       }
     },
     selectSize(index) {
-      if (index) {
-        this.selectedSize = !this.selectedSize
+      const btn = document.querySelector(
+        `.${this.sizes[index]}${index}`
+      ).classList
+      if (btn.contains('secondary')) {
+        btn.replace('secondary', 'primary')
+      } else {
+        btn.replace('primary', 'secondary')
+      }
+      if (btn.contains('primary--text')) {
+        btn.replace('primary--text', 'secondary--text')
+      } else {
+        btn.replace('secondary--text', 'primary--text')
       }
     },
     changeContentReview() {
