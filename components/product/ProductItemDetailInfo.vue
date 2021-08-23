@@ -31,7 +31,8 @@
           elevation="0"
           class="primary--text rounded-0 btn"
           color="secondary"
-          ><v-icon>mdi-heart-outline</v-icon></v-btn
+          @click="like"
+          ><v-icon>{{ heart }}</v-icon></v-btn
         >
       </div>
       <p class="brand">TACH</p>
@@ -42,40 +43,38 @@
 으로 조작된 것입니다.
       </pre>
       <p class="color-text">Color</p>
-      <div class="color-btn">
+      <v-btn-toggle
+        v-model="toggle_color"
+        class="color-btn"
+        group
+      >
         <div v-for="(color, index) in colors" :key="index">
           <v-btn
             elevation="0"
             :style="{ color: color }"
-            :class="color + index"
+            class="selectedColor"
+            :value="index"
             color="secondary"
-            @click="selectColor(index)"
           >
             <v-icon
               >mdi-checkbox-blank-circle</v-icon
             ></v-btn
           >
         </div>
-      </div>
+      </v-btn-toggle>
 
       <div class="size-content-container">
         <p class="size-text">Size</p>
         <div class="size-btn">
-          <div v-for="(size, index) in sizes" :key="index">
+          <v-btn-toggle v-model="toggle_size" group>
             <v-btn
+              v-for="(size, index) in sizes"
+              :key="index"
               elevation="0"
-              color="secondary"
-              :class="
-                size +
-                index +
-                ' primary--text' +
-                ' rounded-0' +
-                ' size-btn'
-              "
-              @click="selectSize(index)"
+              class="selectedSize"
               >{{ size }}</v-btn
             >
-          </div>
+          </v-btn-toggle>
           <v-btn
             v-ripple="false"
             color="secondary"
@@ -190,10 +189,10 @@ export default {
   data() {
     return {
       hover: false,
-      selectedColor: false,
-      selectedSize: false,
       selectedBtn: true,
-
+      toggle_color: 0,
+      toggle_size: 0,
+      heart: 'mdi-heart-outline',
       colors: ['red', 'pink', 'blue', 'purple'],
       sizes: ['XS', 'S', 'M', 'L', 'XL'],
     }
@@ -202,33 +201,11 @@ export default {
     goBack() {
       window.history.back()
     },
-    selectColor(index) {
-      const btn = document.querySelector(
-        `.${this.colors[index]}${index}`
-      ).classList
-      if (btn.contains('secondary')) {
-        btn.replace('secondary', 'primary')
+    like() {
+      if (this.heart === 'mdi-heart-outline') {
+        this.heart = 'mdi-heart'
       } else {
-        btn.replace('primary', 'secondary')
-        btn.replace('secondary--text', 'primary--text')
-      }
-      if (btn.contains('primary--text')) {
-        btn.replace('primary--text', 'secondary--text')
-      }
-    },
-    selectSize(index) {
-      const btn = document.querySelector(
-        `.${this.sizes[index]}${index}`
-      ).classList
-      if (btn.contains('secondary')) {
-        btn.replace('secondary', 'primary')
-      } else {
-        btn.replace('primary', 'secondary')
-      }
-      if (btn.contains('primary--text')) {
-        btn.replace('primary--text', 'secondary--text')
-      } else {
-        btn.replace('secondary--text', 'primary--text')
+        this.heart = 'mdi-heart-outline'
       }
     },
     changeContentReview() {
@@ -312,6 +289,14 @@ export default {
   min-width: 30px !important;
 }
 
+.v-btn--active.selectedColor {
+  color: #d8cfc7 !important;
+  background-color: #363636 !important;
+}
+.theme--dark .v-btn--active.selectedColor {
+  color: #363636 !important;
+  background-color: #d8cfc7 !important;
+}
 .size-content-container {
   margin: 0 0 10px 0;
 }
@@ -333,6 +318,14 @@ export default {
 }
 .question-mark:hover {
   cursor: default;
+}
+.v-btn--active.selectedSize {
+  color: #d8cfc7 !important;
+  background-color: #363636 !important;
+}
+.theme--dark .v-btn--active.selectedSize {
+  color: #363636 !important;
+  background-color: #d8cfc7 !important;
 }
 .size-information {
   background-color: red;
@@ -370,6 +363,7 @@ export default {
   background-color: #d8cfc7;
   color: #363636;
 }
+
 .review-and-qna-content-container .v-btn {
   font-family: 'BMHANNApro';
   min-width: 100px !important;
