@@ -1,6 +1,6 @@
 <template>
   <div class="detail-container">
-    <v-btn-toggle group>
+    <v-btn-toggle group v-model="selectedImg">
       <div class="small-image-btn-container">
         <v-btn
           v-for="(img, index) in imgList"
@@ -36,6 +36,8 @@
 
 <script>
 import ProductItemDetailInfo from './ProductItemDetailInfo.vue'
+import Converter from 'dominant-color-converter'
+import Vibrant from 'node-vibrant'
 export default {
   components: {
     ProductItemDetailInfo,
@@ -46,12 +48,27 @@ export default {
   data() {
     return {
       imgList: ['front', 'back', 'side'],
+      colors: [
+        '#000000',
+        '#ffffff',
+        '#111111',
+        '#d8cfc7',
+        '#363636',
+      ],
       selectedImg: 0,
     }
   },
   methods: {
-    selectImg(index) {
+    async selectImg(index) {
       this.selectedImg = index
+      const url = `https://lol.com/assets/images/IndrePants-${this.imgList[index]}.png`
+      console.log(typeof url)
+      const converter = new Converter(this.colors)
+      const convertedColor = await converter
+        .convert(
+          'https://www.apple.com/ac/structured-data/images/open_graph_logo.png?201812022340'
+        )
+        .then((res) => console.log(res))
     },
   },
 }
