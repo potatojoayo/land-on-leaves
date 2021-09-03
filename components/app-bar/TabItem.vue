@@ -7,7 +7,7 @@
   >
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue, { PropOptions } from 'vue'
 
 interface TabItem {
@@ -24,7 +24,7 @@ export default Vue.extend({
 })
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 .app-bar-tab {
   margin: 0 3px !important;
   font-family: 'Space Mono';
@@ -35,4 +35,3 @@ export default Vue.extend({
   height: 1px !important;
 }
 </style>
-
